@@ -1,14 +1,19 @@
 # unixsetting
 unix setting for mac os
 
-brew install zsh
-brew install tmux
-brew install ctags
-brew install luajit
-brew install chruby
+$brew install zsh
+
+$brew install tmux
+
+$brew install ctags
+
+$brew install luajit
+
+$brew install chruby
+
+$brew install mercurial
 
 reference from
-
 
 http://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/
 
@@ -28,5 +33,7 @@ Install Plugins:
 Launch vim and run :PluginInstall
 
 To install from command line: vim +PluginInstall +qall
+
+https://github.com/elsdrm/.unix_settings
 
 
