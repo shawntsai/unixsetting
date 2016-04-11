@@ -1,4 +1,3 @@
-execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
@@ -435,3 +434,16 @@ set wrap
 set nu
 "set rnu
 
+"personal key mappings
+nmap <CR><CR> o<Esc>
+imap <C-]> <C-o>l
+nmap ;l  :res +10<CR>
+nmap ;s  :res -10<CR>
+nmap ;vl :vertical res +10<CR>
+nmap ;vs :vertical res -10 <CR>
+noremap ,, <Esc>:bnext<CR>
+noremap ,. <Esc>:bprevious<CR>
+inoremap ;; <Esc>
+vnoremap ;; <Esc>
+inoremap ,, <End>
+vnoremap // y/<C-R>"<CR> 
