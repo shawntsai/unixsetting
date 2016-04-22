@@ -1,8 +1,5 @@
-
-
-
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/shawn/.oh-my-zsh
+export ZSH=/home/shawn/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -10,12 +7,6 @@ export ZSH=/Users/shawn/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-
-
-
-
-
- #Uncomment the following line to use case-sensitive completion.
 export platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
@@ -60,6 +51,7 @@ autoload -Uz add-zsh-hook
 add-zsh-hook preexec estimate_time_preexec
 add-zsh-hook precmd estimate_time_precmd
 
+# Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
@@ -101,14 +93,11 @@ add-zsh-hook precmd estimate_time_precmd
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast sublime git-flow brew
-virtualenv vundle python tmux git-flow-completion)
-
-
+plugins=(gitfast, vi-mode)
 
 # User configuration
 
-export PATH="/usr/local/bin:/bin:/sbin:/usr/local/rvm/bin:/usr/local/opt/tmux/bin:/usr/bin:/usr/sbin"
+#export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/src/scala/scala-2.10.4/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -137,3 +126,70 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+setopt AUTO_PUSHD
+setopt GLOB_COMPLETE
+setopt PUSHD_MINUS
+setopt PUSHD_TO_HOME
+setopt NO_BEEP
+setopt NO_CASE_GLOB
+
+
+bindkey -M vicmd "q" push-line
+
+export EDITOR="vi"
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+if [[ $platform == 'osx' ]]; then
+    export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Applications/Matlab_R2014b.app/bin:/usr/texbin"
+
+    # spark 1.5.1 requires JVM 1.7+
+    export JAVA_HOME='/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
+
+    function pdf() { mupdf-x11 "$1" & }
+
+    alias l='ls -hpG'
+    alias ls='ls -hpG'
+    alias ll='ls -hlpGA'
+    alias la='ls -pGA'
+
+else
+
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/src/scala/scala-2.10.4/bin"
+    #export PYSPARK_SUBMIT_ARGS='--packages com.databricks:spark-csv_2.10:1.2.0 --master spark://140.109.18.136:7077 --executor-memory 200G --driver-memory 20G --executor-cores 96'
+    alias l='ls --color=auto -hp'
+    alias ls='ls --color=auto -hp'
+    alias ll='ls --color=auto -hlpA'
+    alias la='ls --color=auto -pA'
+    #alias rs='rsync -av -e ssh elsdrm@140.109.135.120:/Users/elsdrm/Dropbox/.unix_settings /home/elsdrm'
+    alias sag='sudo apt-get'
+    #alias spark-ipynb='IPYTHON_OPTS="notebook" /opt/spark/bin/spark-submit --master spark://140.109.18.136:7077 --executor-memory 200G --driver-memory 20G --packages com.databricks:spark-csv_2.10:1.2.0'
+    alias spark-ipynb='PYSPARK_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" /opt/spark/bin/pyspark --packages com.databricks:spark-csv_2.10:1.2.0 --master spark://140.109.18.136:7077 --executor-memory 200G --driver-memory 20G --executor-cores 96'
+    # system management
+    alias dstat='dstat -cdlmnpsy'
+    alias nmon='nmon -s 1'
+fi
+
+alias rr='ranger'
+alias gsb='git show-branch --color'
+alias grep='grep --color=auto -n'
+alias egrep='egrep --color=auto -n'
+alias fgrep='fgrep --color=auto -n'
+alias ccat='highlight -O ansi'
+alias v='vim'
+alias rv='vim +PluginUpdate +qall'
+alias rrv='vim +PluginClean +PluginUpdate +PluginInstall +qall'
+alias ev='vim ~/.vimrc'
+alias rz='source ~/.zshrc'
+alias ez='vim ~/.zshrc'
+#alias rlsftp='with-readline sftp'
+#alias rlftp='with-readline ftp'
+alias clang++='clang++ -std=c++11'
+alias g++='g++ -std=c++11'
+alias p2i='sudo -H pip2 install'
+alias p2u='sudo -H pip2 install --upgrade'
+alias p3i='sudo -H pip3 install'
+alias p3u='sudo -H pip3 install --upgrade'
+alias ipy='ipython3'
+
+NORMAL_SYMBOL='@'
+INSERT_SYMBOL='@'

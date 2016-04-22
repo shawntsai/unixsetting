@@ -446,4 +446,6 @@ noremap ,. <Esc>:bprevious<CR>
 inoremap ;; <Esc>
 vnoremap ;; <Esc>
 inoremap ,, <End>
+inoremap .. <Home>
+inoremap ,. <Esc>I
 vnoremap // y/<C-R>"<CR> 
