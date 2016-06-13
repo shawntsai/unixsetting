@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/shawn/.oh-my-zsh
+# different from linux
+export ZSH=/Users/shawn/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -93,7 +94,7 @@ add-zsh-hook precmd estimate_time_precmd
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast, vi-mode)
+plugins=(gitfast, vi-mode, sublime, copydir, web-search, pip, django)
 
 # User configuration
 
@@ -144,9 +145,13 @@ if [[ $platform == 'osx' ]]; then
 
     # spark 1.5.1 requires JVM 1.7+
     export JAVA_HOME='/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
+    
+    # fix locale
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
 
     function pdf() { mupdf-x11 "$1" & }
-
+    alias jnb='jupyter notebook'
     alias l='ls -hpG'
     alias ls='ls -hpG'
     alias ll='ls -hlpGA'
@@ -168,7 +173,7 @@ else
     alias dstat='dstat -cdlmnpsy'
     alias nmon='nmon -s 1'
 fi
-
+alias server='python -m SimpleHTTPServer'
 alias rr='ranger'
 alias gsb='git show-branch --color'
 alias grep='grep --color=auto -n'
