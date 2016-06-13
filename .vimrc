@@ -425,8 +425,12 @@ set foldenable
 set autoindent
 
 " general settings
+"syntax on
+"colo elflord
+
 syntax on
-colo elflord
+colorscheme onedark
+
 set cul
 "set cuc
 set history=1000
