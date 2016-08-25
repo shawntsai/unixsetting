@@ -25,7 +25,7 @@ LINUX
 
 sudo apt-get update
 sudo apt-get install git-all
-
+sudo apt-get install tmux
 
 installing zsh 
 
@@ -63,8 +63,3 @@ http://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/
 https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git
 https://github.com/bobthecow/git-flow-completion
 https://github.com/elsdrm/.unix_settings
-
-
-
-
-
