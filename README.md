@@ -24,14 +24,19 @@ $brew install mercurial
 LINUX
 
 sudo apt-get update
+
 sudo apt-get install git-all
+
 sudo apt-get install tmux
 
 installing zsh 
 
 sudo apt-get install zsh
+
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sudo sh
+
 can skip this… if point 2 is done correctly.
+
 sudo chsh -s /bin/zsh
 
 
@@ -53,13 +58,14 @@ Launch vim and run :PluginInstall
 To install from command line: vim +PluginInstall +qall
 
 Place onedark.vim in your ~/.vim/colors/
+
 mkdir ~/.vim/colors
+
 mv onedark.vim ~/.vim/colors
 
 reference from
 
 http://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/
-
 https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git
 https://github.com/bobthecow/git-flow-completion
 https://github.com/elsdrm/.unix_settings
