@@ -21,13 +21,18 @@ $brew install chruby
 $brew install mercurial
 
 
+LINUX
+
 sudo apt-get update
 sudo apt-get install git-all
 
-1. sudo apt-get install zsh
-2. curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sudo sh
+
+installing zsh 
+
+sudo apt-get install zsh
+curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sudo sh
 can skip this… if point 2 is done correctly.
-3. sudo chsh -s /bin/zsh
+sudo chsh -s /bin/zsh
 
 
 chmod +x install_vim_lua.sh
