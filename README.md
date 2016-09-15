@@ -88,3 +88,12 @@ $chsh -s $(`which zsh`) $USER
 
 
 
+install latest version tmux
+
+sudo yum install libevent-devel 
+
+	$ git clone https://github.com/tmux/tmux.git
+	$ cd tmux
+	$ sh autogen.sh
+	$ ./configure && make
+
