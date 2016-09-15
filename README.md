@@ -39,6 +39,10 @@ can skip this… if point 2 is done correctly.
 
 sudo chsh -s /bin/zsh
 
+or 
+sudo vim /etc/passwd
+change the last line
+
 
 chmod +x install_vim_lua.sh
 
@@ -69,3 +73,11 @@ http://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/
 https://github.com/robbyrussell/oh-my-zsh/wiki/Plugin:git
 https://github.com/bobthecow/git-flow-completion
 https://github.com/elsdrm/.unix_settings
+
+
+
+
+
+Some bugs related to AWS EC2 
+
+http://blog.leanote.com/post/hugo/complete-13-command-not-found-compdef
