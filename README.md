@@ -81,3 +81,10 @@ https://github.com/elsdrm/.unix_settings
 Some bugs related to AWS EC2 
 
 http://blog.leanote.com/post/hugo/complete-13-command-not-found-compdef
+
+change the shell in tmux to zsh
+
+$chsh -s $(`which zsh`) $USER
+
+
+
