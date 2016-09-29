@@ -18,39 +18,53 @@ elif [[ "$unamestr" == 'FreeBSD' ]]; then
     export platform='freebsd'
 fi
 
-function estimate_time_preexec {
-    start_time=$SECONDS
+#function estimate_time_preexec {
+    #start_time=$SECONDS
+#}
+
+#function estimate_time_precmd {
+    #timer_result=$(( $SECONDS - $start_time ))
+    #if [[ $timer_result -gt 3 ]]; then
+        #calc_elapsed_time
+    #fi
+    #start_time=$SECONDS
+#}
+
+#function calc_elapsed_time {
+#if [[ $timer_result -ge 3600 ]]; then
+    #let "timer_hours = $timer_result / 3600"
+    #let "remainder = $timer_result % 3600"
+    #let "timer_minutes = $remainder / 60"
+    #let "timer_seconds = $remainder % 60"
+    #print -P "%B%F{red}>>> elapsed time ${timer_hours}h${timer_minutes}m${timer_seconds}s%b"
+#elif [[ $timer_result -ge 60 ]]; then
+    #let "timer_minutes = $timer_result / 60"
+    #let "timer_seconds = $timer_result % 60"
+    #print -P "%B%F{yellow}>>> elapsed time ${timer_minutes}m${timer_seconds}s%b"
+#elif [[ $timer_result -gt 3 ]]; then
+    #print -P "%B%F{green}>>> elapsed time ${timer_result}s%b"
+#fi
+#}
+
+
+#autoload -Uz add-zsh-hook
+
+#add-zsh-hook preexec estimate_time_preexec
+#add-zsh-hook precmd estimate_time_precmd
+
+
+function preexec() {
+  timer=${timer:-$SECONDS}
 }
 
-function estimate_time_precmd {
-    timer_result=$(( $SECONDS - $start_time ))
-    if [[ $timer_result -gt 3 ]]; then
-        calc_elapsed_time
-    fi
-    start_time=$SECONDS
+function precmd() {
+  if [ $timer ]; then
+    timer_show=$(($SECONDS - $timer))
+    export RPROMPT="%F{cyan}${timer_show}s %{$reset_color%}"
+    unset timer
+  fi
 }
 
-function calc_elapsed_time {
-if [[ $timer_result -ge 3600 ]]; then
-    let "timer_hours = $timer_result / 3600"
-    let "remainder = $timer_result % 3600"
-    let "timer_minutes = $remainder / 60"
-    let "timer_seconds = $remainder % 60"
-    print -P "%B%F{red}>>> elapsed time ${timer_hours}h${timer_minutes}m${timer_seconds}s%b"
-elif [[ $timer_result -ge 60 ]]; then
-    let "timer_minutes = $timer_result / 60"
-    let "timer_seconds = $timer_result % 60"
-    print -P "%B%F{yellow}>>> elapsed time ${timer_minutes}m${timer_seconds}s%b"
-elif [[ $timer_result -gt 3 ]]; then
-    print -P "%B%F{green}>>> elapsed time ${timer_result}s%b"
-fi
-}
-
-
-autoload -Uz add-zsh-hook
-
-add-zsh-hook preexec estimate_time_preexec
-add-zsh-hook precmd estimate_time_precmd
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -144,7 +158,9 @@ if [[ $platform == 'osx' ]]; then
     export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Applications/Matlab_R2014b.app/bin:/usr/texbin"
 
     # spark 1.5.1 requires JVM 1.7+
-    export JAVA_HOME='/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
+    #export JAVA_HOME='/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
+    #export JAVA_HOME='/usr/bin/javac'
+
     
     # fix locale
     export LC_ALL=en_US.UTF-8
@@ -195,6 +211,8 @@ alias p2u='sudo -H pip2 install --upgrade'
 alias p3i='sudo -H pip3 install'
 alias p3u='sudo -H pip3 install --upgrade'
 alias ipy='ipython3'
+alias profile='python -m cProfile -o run_profile.prof'
+alias pyGraph='pycallgraph graphviz --'
 
 NORMAL_SYMBOL='@'
 INSERT_SYMBOL='@'
