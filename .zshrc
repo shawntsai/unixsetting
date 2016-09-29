@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh installation.
-# different from linux
-export ZSH=/Users/shawn/.oh-my-zsh
+export ZSH=/home/shawn/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -98,7 +97,6 @@ plugins=(gitfast, vi-mode, sublime, copydir, web-search, pip, django)
 
 # User configuration
 
-#export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/src/scala/scala-2.10.4/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -145,12 +143,11 @@ if [[ $platform == 'osx' ]]; then
 
     # spark 1.5.1 requires JVM 1.7+
     export JAVA_HOME='/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
-    
     # fix locale
     export LC_ALL=en_US.UTF-8
     export LANG=en_US.UTF-8
-
     function pdf() { mupdf-x11 "$1" & }
+
     alias jnb='jupyter notebook'
     alias l='ls -hpG'
     alias ls='ls -hpG'
@@ -158,21 +155,19 @@ if [[ $platform == 'osx' ]]; then
     alias la='ls -pGA'
 
 else
-
     export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/src/scala/scala-2.10.4/bin"
-    #export PYSPARK_SUBMIT_ARGS='--packages com.databricks:spark-csv_2.10:1.2.0 --master spark://140.109.18.136:7077 --executor-memory 200G --driver-memory 20G --executor-cores 96'
     alias l='ls --color=auto -hp'
     alias ls='ls --color=auto -hp'
     alias ll='ls --color=auto -hlpA'
     alias la='ls --color=auto -pA'
-    #alias rs='rsync -av -e ssh elsdrm@140.109.135.120:/Users/elsdrm/Dropbox/.unix_settings /home/elsdrm'
     alias sag='sudo apt-get'
-    #alias spark-ipynb='IPYTHON_OPTS="notebook" /opt/spark/bin/spark-submit --master spark://140.109.18.136:7077 --executor-memory 200G --driver-memory 20G --packages com.databricks:spark-csv_2.10:1.2.0'
     alias spark-ipynb='PYSPARK_PYTHON=ipython PYSPARK_DRIVER_PYTHON_OPTS="notebook --no-browser --port=7777" /opt/spark/bin/pyspark --packages com.databricks:spark-csv_2.10:1.2.0 --master spark://140.109.18.136:7077 --executor-memory 200G --driver-memory 20G --executor-cores 96'
+
     # system management
     alias dstat='dstat -cdlmnpsy'
     alias nmon='nmon -s 1'
 fi
+
 alias server='python -m SimpleHTTPServer'
 alias rr='ranger'
 alias gsb='git show-branch --color'
