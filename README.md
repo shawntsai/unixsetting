@@ -97,3 +97,28 @@ sudo yum install libevent-devel
 	$ sh autogen.sh
 	$ ./configure && make
 
+
+build vim from source with lua
+
+git clone https://github.com/vim/vim
+cd vim/src
+sudo make distclean
+
+sudo ./configure --with-features=huge \
+            --enable-rubyinterp \
+            --enable-largefile \
+            --disable-netbeans \
+            --enable-pythoninterp \
+            --with-python-config-dir=/usr/lib/python2.7/config \
+            --enable-perlinterp \
+	    --enable-luainterp=dynamic \
+	    --enable-gui=auto \
+            --enable-fail-if-missing \
+            --enable-cscope \
+            --enable-multibyte \
+    	    --enable-gpm \
+    	    --enable-cscope \
+	    --enable-fontset
+sudo make 
+sudo make install
+
