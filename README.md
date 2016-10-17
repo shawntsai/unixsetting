@@ -101,7 +101,9 @@ sudo yum install libevent-devel
 build vim from source with lua
 
 git clone https://github.com/vim/vim
+
 cd vim/src
+
 sudo make distclean
 
 sudo ./configure --with-features=huge \
@@ -119,6 +121,8 @@ sudo ./configure --with-features=huge \
     	    --enable-gpm \
     	    --enable-cscope \
 	    --enable-fontset
+
 sudo make 
+
 sudo make install
 
